@@ -24,7 +24,7 @@
   <body>
     <div class="header">
       <div class="headerInner">
-        <h4>My Library</h4>
+        <h1>My Library</h1>
         <div
           class="text-center"
           id="addNew"
@@ -88,18 +88,27 @@
                 />
                 <div id="pagesMsg"></div>
               </div>
+              <div>
+                <label for="read">Have you read this book? </label>
+                <input
+                  class="mb-3"
+                  type="checkbox"
+                  name="read"
+                  id="readInput"
+                />
+                <div id="pagesMsg"></div>
+              </div>
             </div>
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="cancelBtn"
                 data-bs-dismiss="modal"
+                id="cancel"
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary" id="add">
-                Add
-              </button>
+              <button type="submit" class="addBtn" id="add">Add</button>
             </div>
           </div>
         </div>

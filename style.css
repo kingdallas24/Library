@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
 body,
 html {
@@ -11,14 +12,19 @@ html {
 
 body {
   font-family: sans-serif;
-  background-color: #e5e5e5;
+  background-color: black;
   padding: 20px;
 }
 
-h4 {
+h1 {
+  color: gold;
   font-family: "Rubik Dirt", cursive;
 
   font-size: 3rem;
+}
+
+h5 {
+  color: gold;
 }
 
 .headerInner {
@@ -29,20 +35,25 @@ h4 {
 }
 
 #addNew {
-  border: 1px solid;
+  border: 3px solid gold;
   display: flex;
   align-items: center;
-  width: 20%;
+  width: minMax(250px, 400px);
   justify-content: space-between;
-  background-color: #85b8c5;
-  padding: 5px 10px;
+  background-color: black;
+  color: gold;
+  padding: 10px 10px;
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
 }
 
+#addNew:hover {
+  background: gold;
+  color: black;
+}
+
 .fa-plus {
-  background-color: #1692b1;
   padding: 3px;
   border-radius: 5px;
 }
@@ -51,16 +62,16 @@ h4 {
   max-height: 800px;
   display: grid;
   gap: 10px;
-  border: 5px solid #1692b1;
+  border: 5px solid gold;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-rows: minmax(200px, auto);
   grid-auto-flow: row;
   width: 100%;
   max-width: 1200px;
   padding: 15px;
-  background-color: #fff;
+  background-color: black;
   overflow-y: scroll;
 }
 
@@ -69,8 +80,11 @@ h4 {
 }
 
 #books div {
-  background-color: #85b8c5;
-  border: 3px solid #fff;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.3rem;
+  color: gold;
+  background-color: black;
+  border: 4px solid gold;
   padding: 5px;
   border-radius: 10px;
   display: grid;
@@ -79,21 +93,52 @@ h4 {
 
 .options {
   justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
 }
 
 .options i {
   cursor: pointer;
 }
 
+#form {
+  border: 5px solid gold;
+}
+
 .modal-body label {
   display: inline-block;
   width: 100px;
+  color: gold;
 }
 
-.modal-body input {
+.modal-body {
+  background: black;
+}
+.modal-header {
+  background: black;
+}
+
+.modal-footer {
+  background: black;
+}
+
+.modal-body input[type="text"] {
   border-radius: 7px;
   width: 300px;
   margin: 3px;
+}
+
+.modal-body input[type="checkbox"] {
+  padding: 20px;
+}
+
+.modal-content {
+  -webkit-border: 5px solid gold !important;
+
+  border: 5px solid gold !important;
 }
 
 #titleMsg,
@@ -101,4 +146,35 @@ h4 {
 #pagesMsg {
   color: red;
   margin: 0;
+}
+
+.addBtn,
+.cancelBtn {
+  border: 3px solid gold;
+  color: gold;
+  background: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.addBtn:hover,
+.cancelBtn:hover {
+  background: gold;
+  color: black;
+}
+
+.changeRead {
+  border: 3px solid gold;
+  color: gold;
+  background: black;
+  border-radius: 5px;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.changeRead:hover {
+  background: gold;
+  color: black;
 }
