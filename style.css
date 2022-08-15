@@ -1,35 +1,104 @@
-html,
-body {
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+
+body,
+html {
   height: 100vh;
 }
 
-header {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
-.container {
-  border: 1px solid blue;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-  grid-auto-rows: minmax(300px, auto);
+
+body {
+  font-family: sans-serif;
+  background-color: #e5e5e5;
+  padding: 20px;
+}
+
+h4 {
+  font-family: "Rubik Dirt", cursive;
+
+  font-size: 3rem;
+}
+
+.headerInner {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  justify-self: center;
-  gap: 1rem;
+  align-items: center;
+}
+
+#addNew {
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  width: 20%;
+  justify-content: space-between;
+  background-color: #85b8c5;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.fa-plus {
+  background-color: #1692b1;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+#books {
+  max-height: 800px;
+  display: grid;
+  gap: 10px;
+  border: 5px solid #1692b1;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(200px, auto);
+  grid-auto-flow: row;
   width: 100%;
   max-width: 1200px;
-  padding: 2rem;
+  padding: 15px;
+  background-color: #fff;
+  overflow-y: scroll;
 }
 
-.container div {
-  font-size: 1.2rem;
-  border: 1px solid red;
-  margin: 0 auto;
+#books::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+#books div {
+  background-color: #85b8c5;
+  border: 3px solid #fff;
+  padding: 5px;
   border-radius: 10px;
-  padding: 10px;
+  display: grid;
+  gap: 4px;
 }
 
-.container div button {
-  margin: 5px;
+.options {
+  justify-self: center;
+}
+
+.options i {
+  cursor: pointer;
+}
+
+.modal-body label {
   display: inline-block;
-  border-radius: 15px;
-  font-size: 1.2rem;
+  width: 100px;
+}
+
+.modal-body input {
+  border-radius: 7px;
+  width: 300px;
+  margin: 3px;
+}
+
+#titleMsg,
+#authorMsg,
+#pagesMsg {
+  color: red;
+  margin: 0;
 }

@@ -1,60 +1,58 @@
-"use strict";
-
-let container = document.querySelector(".container");
-let form = document.getElementById("form-id");
-let button = document.querySelector(".addBtn");
-
-let myLibrary = [];
-
-function Book(title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-}
-
-// Create book and add to library
-
-function createBook(title, author, pages) {
-  title = document.getElementById("title").value;
-  author = document.getElementById("author").value;
-  pages = document.getElementById("pages").value;
-  let newBook = new Book(title, author, pages);
-
-  myLibrary.push(newBook);
-}
-
-// Display books
-
-function displayBook() {
-  let newBook = document.createElement("div");
-  let edit = document.createElement("button");
-  let remove = document.createElement("button");
-  let btnContainer = document.createElement("div");
-  edit.textContent = "Edit";
-  remove.textContent = "Remove";
-  btnContainer.appendChild(edit);
-  btnContainer.appendChild(remove);
-
-  newBook.innerHTML = `Title: ${
-    myLibrary[myLibrary.length - 1].title
-  } </br> Author: ${myLibrary[myLibrary.length - 1].author} </br> Pages: ${
-    myLibrary[myLibrary.length - 1].pages
-  }`;
-
-  newBook.appendChild(btnContainer);
-
-  container.appendChild(newBook);
-
-  remove.addEventListener("click", (e) => {
-    myLibrary.pop();
-  });
-}
+let form = document.getElementById("form");
+let titleInput = document.getElementById("titleInput");
+let pagesInput = document.getElementById("pagesInput");
+let authorInput = document.getElementById("authorInput");
+let titleMsg = document.getElementById("titleMsg");
+let authorMsg = document.getElementById("authorMsg");
+let pagesMsg = document.getElementById("pagesMsg");
+let books = document.getElementById("books");
+let add = document.getElementById("add");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  createBook();
-  displayBook();
-  form.reset();
+  formValidation();
 });
 
-// function to remove card
+let formValidation = () => {
+  if (titleInput.value === "") {
+    console.log("fail");
+    titleMsg.innerHTML = "Please fill out the title.";
+  } else {
+    console.log("success");
+    titleMsg.innerHTML = "";
+    acceptData();
+    add.setAttribute("data-bs-dismiss", "modal");
+    add.click();
+
+    (() => {
+      add.setAttribute("data-bs-dismiss", " ");
+    })();
+  }
+};
+
+let myLibrary = {};
+
+let acceptData = () => {
+  myLibrary["title"] = titleInput.value;
+  myLibrary["author"] = authorInput.value;
+  myLibrary["pages"] = pagesInput.value;
+
+  createBook();
+};
+
+let createBook = () => {
+  books.innerHTML += ` <div>
+  <span class="fw-bold">Title: ${myLibrary.title}</span>
+  <span >Author: ${myLibrary.author}</span>
+  <span>Number of Pages: ${myLibrary.pages}</span>
+  <span class="options">
+    <i class="fa-solid fa-pen-to-square"></i>
+    <i class="fa-solid fa-trash"></i>
+  </span>
+</div>`;
+  form.reset();
+};
+
+let resetForm = () => {
+  textIn;
+};
