@@ -30,29 +30,54 @@ let formValidation = () => {
   }
 };
 
-let myLibrary = {};
+let myLibrary = [];
 
 let acceptData = () => {
-  myLibrary["title"] = titleInput.value;
-  myLibrary["author"] = authorInput.value;
-  myLibrary["pages"] = pagesInput.value;
+  myLibrary.push({
+    title: titleInput.value,
+    author: authorInput.value,
+    pages: pagesInput.value,
+  });
 
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  console.log(myLibrary);
   createBook();
 };
 
 let createBook = () => {
-  books.innerHTML += ` <div>
-  <span class="fw-bold">Title: ${myLibrary.title}</span>
-  <span >Author: ${myLibrary.author}</span>
-  <span>Number of Pages: ${myLibrary.pages}</span>
-  <span class="options">
-    <i class="fa-solid fa-pen-to-square"></i>
-    <i class="fa-solid fa-trash"></i>
-  </span>
-</div>`;
+  books.innerHTML = "";
+  myLibrary.map((x, y) => {
+    return (books.innerHTML += ` <div id = ${y}>
+    <span class="fw-bold">Title: ${x.title}</span>
+    <span >Author: ${x.author}</span>
+    <span>Number of Pages: ${x.pages}</span>
+    <span class="options">
+      <i onClick = "editBook(this)"   data-bs-toggle="modal"
+      data-bs-target="#form"class="fa-solid fa-pen-to-square"></i>
+      <i onClick = "deleteBook(this); createBook()" class="fa-solid fa-trash"></i>
+    </span>
+  </div>`);
+  });
+
   form.reset();
 };
 
-let resetForm = () => {
-  textIn;
+let deleteBook = (e) => {
+  e.parentElement.parentElement.remove();
+  myLibrary.splice(e.parentElement.parentElement.id, 1);
+
+  console.log(e.parentElement.parentElement.id);
 };
+
+let editBook = (e) => {
+  let selectedBook = e.parentElement.parentElement;
+  titleInput.value = selectedBook.children[0].innerHTML;
+  authorInput.value = selectedBook.children[1].innerHTML;
+  pagesInput.value = selectedBook.children[2].innerHTML;
+  deleteBook(e);
+};
+
+(() => {
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+  createBook();
+})();
